@@ -10,14 +10,14 @@ i = 0
 
 while i < 2:
     ## variable for columns
-    transaction_date = fake.date_between(start_date=date(2023,12,1), end_date=date(2024,4,1))
+    transaction_date = fake.date_between(start_date=date(2024,1,1), end_date=date(2024,4,1))
     username = fake.user_name()
     brand = random.choice(['Brand 1','Brand 2','Brand 3','Brand 4'])
     segment = random.choice(['Occasional','Potential','VIP','Inactive'])
-    deposit_eur = random.randint(0,1000)
-    revenue_eur = random.randint(-1000,1000)
-    fee_eur = random.randint(0,100)
-    cost_eur = random.randint(0,1000)
+    deposit_eur = random.randint(0,100)
+    revenue_eur = random.randint(-100,100)
+    fee_eur = random.randint(0,30)
+    cost_eur = random.randint(0,50)
     is_active = random.choice(['TRUE', 'FALSE'])
 
 
