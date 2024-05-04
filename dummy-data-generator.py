@@ -1,6 +1,7 @@
 from faker import Faker
 import csv
 import random
+import os.path
 fake = Faker()
 
 
@@ -29,15 +30,12 @@ users = {
         'is_active': is_active,
          }
 
-def generator():
-    with open('users.csv','w', newline='') as f:
+file_exists = os.path.isfile("users.csv")
+
+with open('users.csv','a', newline='') as f:
             fields = ['date', 'username', 'brand', 'segment', 'deposit_eur','revenue_eur','cost_eur','fee_eur','is_active']
             writer = csv.DictWriter(f, fieldnames=fields)
-            writer.writeheader()
-            writer.writerow(users)
-        
-
-i = 0
-while i < 10: 
-    generator()
-    i += 1
+            if not file_exists:
+                writer.writeheader()
+            else: 
+                writer.writerow(users)
