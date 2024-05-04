@@ -8,7 +8,7 @@ fake = Faker()
 
 i = 0
 
-while i < 2:
+while i < 30000:
     ## variable for columns
     transaction_date = fake.date_between(start_date=date(2024,1,1), end_date=date(2024,4,1))
     username = fake.user_name()
@@ -45,5 +45,4 @@ while i < 2:
                 writer.writeheader()
             else: 
                 writer.writerow(users)  
-
-i += 1
+    i += 1
