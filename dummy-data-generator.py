@@ -20,8 +20,8 @@ while i < 30000:
     revenue_eur = random.randint(-100,100)
     fee_eur = random.randint(0,30)
     cost_eur = random.randint(0,50)
-
-    is_active = random.choice(['TRUE', 'FALSE'])
+    is_active_prev_month = random.choice(['TRUE', 'FALSE'])
+    is_active_curr_month = random.choice(['TRUE', 'FALSE'])
 
 
     ## dummy dict
@@ -36,14 +36,15 @@ while i < 30000:
             'revenue_eur': revenue_eur,
             'cost_eur': cost_eur,
             'fee_eur': fee_eur,
-            'is_active': is_active,
+            'is_active_prev_month': is_active_prev_month,
+            'is_active_curr_month': is_active_curr_month,
             }
 
     file_exists = os.path.isfile("users.csv")
 
 
     with open('users.csv','a', newline='') as f:
-            fields = ['transaction_date', 'username', 'brand', 'segment', 'offer', 'most_played_TOD', 'deposit_eur','revenue_eur','cost_eur','fee_eur','is_active']
+            fields = ['transaction_date', 'username', 'brand', 'segment', 'offer', 'most_played_TOD', 'deposit_eur','revenue_eur','cost_eur','fee_eur','is_active_curr_month','is_active_prev_month']
             writer = csv.DictWriter(f, fieldnames=fields)
 
             if not file_exists:
