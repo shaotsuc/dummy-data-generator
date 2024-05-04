@@ -14,10 +14,13 @@ while i < 30000:
     username = fake.user_name()
     brand = random.choice(['Brand 1','Brand 2','Brand 3','Brand 4'])
     segment = random.choice(['Occasional','Potential','VIP','Inactive'])
+    offer = random.choice(['Voucher', 'Gift Card', 'Loyalty Program', 'Promotion'])
+    most_played_TOD = random.choice(['Morning (06-12)', 'Afternoon (13-18)', 'Night (19-00)'])
     deposit_eur = random.randint(0,100)
     revenue_eur = random.randint(-100,100)
     fee_eur = random.randint(0,30)
     cost_eur = random.randint(0,50)
+
     is_active = random.choice(['TRUE', 'FALSE'])
 
 
@@ -27,6 +30,8 @@ while i < 30000:
             'username': username, 
             'brand': brand,
             'segment': segment,
+            'offer': offer,
+            'most_played_TOD': most_played_TOD,
             'deposit_eur': deposit_eur,
             'revenue_eur': revenue_eur,
             'cost_eur': cost_eur,
@@ -38,7 +43,7 @@ while i < 30000:
 
 
     with open('users.csv','a', newline='') as f:
-            fields = ['transaction_date', 'username', 'brand', 'segment', 'deposit_eur','revenue_eur','cost_eur','fee_eur','is_active']
+            fields = ['transaction_date', 'username', 'brand', 'segment', 'offer', 'most_played_TOD', 'deposit_eur','revenue_eur','cost_eur','fee_eur','is_active']
             writer = csv.DictWriter(f, fieldnames=fields)
 
             if not file_exists:
