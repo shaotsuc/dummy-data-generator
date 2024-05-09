@@ -6,4 +6,4 @@ This script is to generate dummy data for showcasing data visualization in Table
 
 - [Bank Customer Data](https://github.com/shaotsuc/dummy-data-generator/blob/main/bank_customer_data.py) python script was used to demonstrate SQL process to answer some business questions.
 
-- [Optimization Dataset](https://github.com/shaotsuc/dummy-data-generator/blob/main/optimization_dataset/) python script was used to demonstrate SQL optimization for better Tableau performance.
+- [Optimization Dataset](https://github.com/shaotsuc/dummy-data-generator/tree/main/optmization_dataset) python script was used to demonstrate SQL optimization for better Tableau performance.
