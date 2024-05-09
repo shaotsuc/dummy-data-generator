@@ -21,6 +21,7 @@ while n < 31:
         game_list.append(new_game)
     n += 1
 
+months = ['2024-01-01', '2024-02-01', '2024-03-01','2024-04-01','2024-05-01',]
 time_of_day = ['MORNING (06-12)', 'AFTERNOON (13-18)', 'NIGHT (19-00)']
 yes_or_no = ['TRUE', 'FALSE']
 
@@ -29,7 +30,7 @@ yes_or_no = ['TRUE', 'FALSE']
 i = 0
 while i < 30000:
     ## variable for columns
-    transaction_date = fake.date_between(start_date=date(2024,1,1), end_date=date(2024,5,1))
+    transaction_month = random.choice(months)
     user = random.choice(user_list)
     game = random.choice(game_list)
     most_played_TOD = random.choice(time_of_day)
@@ -39,7 +40,7 @@ while i < 30000:
 
     ## users dict
     users = {
-            'transaction_date': transaction_date,
+            'transaction_month': transaction_month,
             'user': user, 
             'game': game,
             'most_played_TOD': most_played_TOD,
