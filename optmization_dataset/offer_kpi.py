@@ -27,6 +27,7 @@ while n < 31:
         game_list.append(new_game)
     n += 1
 
+offer_stage_list = ['CLAIMED', 'USED', 'EXPIRED', 'LOST', 'COMPLETED']
 yes_or_no = ['TRUE', 'FALSE']
 
 
@@ -38,7 +39,10 @@ while i < 30000:
     user = random.choice(user_list)
     game = random.choice(game_list)
     offer_id = random.choice(offer_id_list)
+    offer_stage = random.choice(offer_stage_list)
     revenue_eur = random.randint(-100,100)
+    conversion_eur = random.randint(0,100)
+    offer_amt_eur = random.randint(1,100)
     offer_cost_eur = random.randint(0,100)
     is_using_offer = random.choice(yes_or_no)
     is_active_prev_month = random.choice(yes_or_no)
@@ -51,7 +55,10 @@ while i < 30000:
             'user': user, 
             'game': game,
             'offer_id': offer_id,
+            'offer_stage': offer_stage,
             'revenue_eur': revenue_eur,
+            'conversion_eur': conversion_eur,
+            'offer_amt_eur': offer_amt_eur,
             'offer_cost_eur': offer_cost_eur,
             'is_using_offer': is_using_offer,
             'is_active_prev_month': is_active_prev_month,
@@ -66,8 +73,8 @@ while i < 30000:
 
 
 ## CSV file generator 
-    file_exists = os.path.isfile("offer_kpis.csv")
-    with open('offer_kpis.csv','a', newline='') as f:
+    file_exists = os.path.isfile("offer_kpi.csv")
+    with open('offer_kpi.csv','a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=fields)
 
             if not file_exists:

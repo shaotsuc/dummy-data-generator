@@ -33,10 +33,8 @@ while i < 30000:
     user = random.choice(user_list)
     game = random.choice(game_list)
     segment = random.choice(segment_list)
-    deposit_eur = random.randint(0,100)
-    revenue_eur = random.randint(-100,100)
-    cost_eur = random.randint(0,50)
-    is_active = random.choice(yes_or_no)
+    deposit_eur = random.randint(0,1000)
+    deposit_cnt = random.randint(0,10)
 
     ## users dict
     users = {
@@ -45,9 +43,7 @@ while i < 30000:
             'game': game,
             'segment': segment,
             'deposit_eur': deposit_eur,
-            'revenue_eur': revenue_eur,
-            'cost_eur': cost_eur,
-            'is_active': is_active,
+            'deposit_cnt': deposit_cnt,
             }
     
 ## fieldsname list
