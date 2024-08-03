@@ -63,11 +63,11 @@ while i < 30000:
 
 
     ## CSV output
-    file_exists = os.path.isfile("Brand-KPIs/brand_kpis_data.csv")
+    file_exists = os.path.isfile("Bank_Customer/bank_customer_data.csv")
     if not file_exists:
-        df.to_csv('Brand-KPIs/brand_kpis_data.csv', index=False)
+        df.to_csv('Bank_Customer/bank_customer_data.csv', index=False)
     else: 
-        df.to_csv('Brand-KPIs/brand_kpis_data.csv', mode='a', header=False, index=False) 
+        df.to_csv('Bank_Customer/bank_customer_data.csv', mode='a', header=False, index=False) 
 
     i += 1
 
