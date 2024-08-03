@@ -1,8 +1,8 @@
 from faker import Faker
-import csv
-import random
 import os.path
+import random
 from datetime import date
+import pandas as pd
 fake = Faker()
 
 
@@ -21,7 +21,7 @@ yes_or_no = ['TRUE', 'FALSE']
 i = 0
 while i < 30000:
     ## variable for columns
-    transaction_date = fake.date_between(start_date=date(2023,11,1), end_date=date(2024,6,1))
+    transaction_date = fake.date_between(start_date=date(2023,11,1), end_date=date(2024,8,1))
     bank_number = fake.iban()
     region = random.choice(region_list)
     age = random.randint(0,90)
@@ -56,21 +56,22 @@ while i < 30000:
             'account_main_fee': account_main_fee,
             'main_contact_media': main_contact_media,
             }
+    
+    ## Pandas data frame
+    new_users = {k: [v] for k, v in users.items()}
+    df = pd.DataFrame.from_dict(new_users)
 
 
-## fieldsname list
-    fields = []
-    for k in users:
-        fields.append(k)
+    ## CSV output
+    file_exists = os.path.isfile("Brand-KPIs/brand_kpis_data.csv")
+    if not file_exists:
+        df.to_csv('Brand-KPIs/brand_kpis_data.csv', index=False)
+    else: 
+        df.to_csv('Brand-KPIs/brand_kpis_data.csv', mode='a', header=False, index=False) 
 
-
-## CSV file generator 
-    file_exists = os.path.isfile("bank_customer.csv")
-    with open('bank_customer.csv','a', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=fields)
-
-            if not file_exists:
-                writer.writeheader()
-            else: 
-                writer.writerow(users)  
     i += 1
+
+
+
+
+

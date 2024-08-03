@@ -1,8 +1,9 @@
 from faker import Faker
-import csv
 import random
 import os.path
 from datetime import date
+import pandas as pd
+
 fake = Faker()
 
 ## Default variables 
@@ -25,7 +26,7 @@ i = 0
 
 while i < 30000:
     ## variable for columns
-    transaction_date = fake.date_between(start_date=date(2024,1,1), end_date=date(2024,4,1))
+    transaction_date = fake.date_between(start_date=date(2024,1,1), end_date=date(2024,8,1))
     username = fake.user_name()
     brand = random.choice(brand_list)
     segment = random.choice(segment_list)
@@ -40,7 +41,7 @@ while i < 30000:
 
 
     ## users dict
-    users = {
+    players = {
             'transaction_date': transaction_date,
             'username': username, 
             'brand': brand,
@@ -56,19 +57,14 @@ while i < 30000:
             }
 
 
-## fieldsname list
-    fields = []
-    for k in users:
-        fields.append(k)
+    ## Pandas data frame
+    new_player = {k: [v] for k, v in players.items()}
+    df = pd.DataFrame.from_dict(new_player)
 
-
-## CSV file generator 
-    file_exists = os.path.isfile("brand_kpis_data.csv")
-    with open('brand_kpis_data.csv','a', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=fields)
-
-            if not file_exists:
-                writer.writeheader()
-            else: 
-                writer.writerow(users)  
+    ## CSV output
+    file_exists = os.path.isfile("Brand-KPIs/brand_kpis_data.csv")
+    if not file_exists:
+        df.to_csv('Brand-KPIs/brand_kpis_data.csv', index=False)
+    else: 
+        df.to_csv('Brand-KPIs/brand_kpis_data.csv', mode='a', header=False, index=False)   
     i += 1
